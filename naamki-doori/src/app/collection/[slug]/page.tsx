@@ -1,7 +1,8 @@
 "use client";
 
-import { use } from "react";
+import { use, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { FadeUp, FadeIn } from "@/components/animations";
@@ -19,6 +20,8 @@ export default function ProductDetailPage({
   if (!product) {
     notFound();
   }
+
+  const [activeImg, setActiveImg] = useState(0);
 
   return (
     <div className="pt-24 lg:pt-28">
@@ -47,36 +50,39 @@ export default function ProductDetailPage({
             <FadeUp>
               <div className="space-y-4">
                 {/* Main Image */}
-                <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-gradient-to-br from-warm-beige via-cream to-soft-brown/20">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-40 h-40 mx-auto mb-6 rounded-full border-2 border-dashed border-gold/20 flex items-center justify-center">
-                        <div className="w-28 h-28 rounded-full border border-gold/30 flex items-center justify-center">
-                          <span className="font-serif text-5xl text-soft-brown/30 italic">
-                            {product.name.charAt(0)}
-                          </span>
-                        </div>
-                      </div>
-                      <p className="font-serif text-lg text-soft-brown/30 italic">
-                        {product.category}
-                      </p>
-                    </div>
-                  </div>
-                  <div className="absolute top-8 left-8 w-20 h-20 border-t-2 border-l-2 border-gold/15 rounded-tl-2xl" />
-                  <div className="absolute bottom-8 right-8 w-20 h-20 border-b-2 border-r-2 border-gold/15 rounded-br-2xl" />
+                <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-warm-beige/30">
+                  <Image
+                    src={product.gallery[activeImg] ?? product.image}
+                    alt={product.name}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    priority
+                  />
+                  <div className="absolute top-8 left-8 w-20 h-20 border-t-2 border-l-2 border-white/20 rounded-tl-2xl pointer-events-none" />
+                  <div className="absolute bottom-8 right-8 w-20 h-20 border-b-2 border-r-2 border-white/20 rounded-br-2xl pointer-events-none" />
                 </div>
 
                 {/* Thumbnails */}
                 <div className="grid grid-cols-3 gap-3">
-                  {[1, 2, 3].map((_, i) => (
-                    <div
+                  {product.gallery.map((img, i) => (
+                    <button
                       key={i}
-                      className="aspect-square rounded-xl overflow-hidden bg-gradient-to-br from-warm-beige/50 to-cream border border-warm-beige/30 flex items-center justify-center cursor-pointer hover:border-gold/30 transition-colors duration-300"
+                      onClick={() => setActiveImg(i)}
+                      className={`relative aspect-square rounded-xl overflow-hidden border-2 transition-all duration-300 cursor-pointer ${
+                        activeImg === i
+                          ? "border-gold shadow-md"
+                          : "border-warm-beige/30 hover:border-gold/50"
+                      }`}
                     >
-                      <span className="font-serif text-xl text-soft-brown/20 italic">
-                        {i + 1}
-                      </span>
-                    </div>
+                      <Image
+                        src={img}
+                        alt={`${product.name} view ${i + 1}`}
+                        fill
+                        className="object-cover"
+                        sizes="120px"
+                      />
+                    </button>
                   ))}
                 </div>
               </div>

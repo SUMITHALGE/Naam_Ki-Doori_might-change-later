@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -19,10 +19,10 @@ function StarRating({ n = 5 }: { n?: number }) {
 }
 
 const giftProducts = [
-  { label: "GIFT ESSENTIALS", price: "?850", img: "/product-hoop.jpg" },
-  { label: "TOTE BAGS", price: "?1,800", img: "/product-tote-floral.jpg" },
-  { label: "CUSTOM TOTES", price: "?1,800", img: "/product-tote-fox.jpg" },
-  { label: "GIFT BASKETS", price: "?2,900", img: "/hero-product.jpg" },
+  { label: "GIFT ESSENTIALS", price: "₹850", img: "/product-hoop.jpg" },
+  { label: "TOTE BAGS", price: "₹1,800", img: "/product-tote-floral.jpg" },
+  { label: "CUSTOM TOTES", price: "₹1,800", img: "/product-tote-fox.jpg" },
+  { label: "GIFT BASKETS", price: "₹2,900", img: "/hero-product.jpg" },
 ];
 
 const categories = [
@@ -103,7 +103,7 @@ export default function HomePage() {
                 className="px-8 py-3 rounded-full font-semibold text-sm tracking-wide transition-all duration-300 hover:scale-105"
                 style={{ background: "#F9C5D1", color: "#5B4E9E" }}
               >
-                SHOP NOW ?
+                SHOP NOW 🛍️
               </Link>
               <a
                 href={SHOP_WA}
@@ -130,13 +130,13 @@ export default function HomePage() {
                 className="absolute -top-4 -left-4 text-purple-900 text-xs font-bold px-3 py-1.5 rounded-full shadow-lg"
                 style={{ background: "#FFE066", transform: "rotate(-12deg)" }}
               >
-                ?? Free Shipping!
+              ✨ Free Shipping!
               </div>
               <div
                 className="absolute -bottom-2 -right-2 text-purple-900 text-xs font-bold px-3 py-1.5 rounded-full shadow-lg"
                 style={{ background: "#F9C5D1", transform: "rotate(8deg)" }}
               >
-                ? Custom Made
+              🎨 Custom Made
               </div>
             </div>
           </motion.div>
@@ -160,7 +160,7 @@ export default function HomePage() {
               GIFTS THAT MAKE THEM SMILE
             </h2>
             <Link href="/collection" className="inline-block mt-3 text-xs text-purple-700 border border-purple-400 rounded-full px-4 py-1.5 hover:bg-purple-100 transition-all">
-              SHOP ALL ITEMS ?
+              SHOP ALL ITEMS 🛍️
             </Link>
           </div>
 
@@ -292,7 +292,7 @@ export default function HomePage() {
           <div className="mt-8 flex flex-col items-center gap-2">
             <StarRating />
             <p className="font-bold text-purple-900 text-sm tracking-wide">CUSTOM EMBROIDERY</p>
-            <p className="text-purple-700 font-semibold text-sm">?1,850</p>
+            <p className="text-purple-700 font-semibold text-sm">₹1,850</p>
           </div>
         </div>
 
@@ -402,8 +402,8 @@ export default function HomePage() {
             >
               <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl max-w-sm mx-auto lg:mx-0">
                 <Image src="/owner-portrait.jpg" alt="Owner of NaamKi Doori" fill className="object-cover" />
-                <div className="absolute -top-4 -left-4 text-4xl select-none">??</div>
-                <div className="absolute -bottom-2 -right-2 text-3xl select-none">??</div>
+                <div className="absolute -top-4 -left-4 text-4xl select-none">🧵</div>
+                <div className="absolute -bottom-2 -right-2 text-3xl select-none">✨</div>
               </div>
             </motion.div>
 
@@ -428,7 +428,7 @@ export default function HomePage() {
                 className="inline-block px-8 py-3 rounded-full font-semibold text-sm transition-all hover:scale-105"
                 style={{ background: "#F9C5D1", color: "#5B4E9E" }}
               >
-                LEARN MORE ?
+                LEARN MORE 🏮
               </a>
             </motion.div>
           </div>
@@ -472,7 +472,7 @@ export default function HomePage() {
               className="px-8 py-3 rounded-full font-semibold text-sm tracking-wide transition-all hover:scale-105"
               style={{ background: "#5B4E9E", color: "#fff" }}
             >
-              GET DIRECTIONS ?
+              GET DIRECTIONS 📍
             </Link>
             <a
               href={SHOP_WA}
@@ -507,3 +507,4 @@ export default function HomePage() {
     </div>
   );
 }
+

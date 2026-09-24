@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Heart, Leaf, Award, Users } from "lucide-react";
 import {
   FadeUp,
   Parallax,
-  ScaleIn,
   StaggerChildren,
   staggerChildVariants,
 } from "@/components/animations";
@@ -45,19 +45,17 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <Parallax>
-              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-gradient-to-br from-warm-beige via-cream to-soft-brown/20">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <div className="w-24 h-24 mx-auto mb-6 rounded-full border-2 border-dashed border-gold/30 flex items-center justify-center">
-                      <Heart size={32} className="text-gold/40" />
-                    </div>
-                    <p className="font-serif text-xl text-soft-brown/40 italic">
-                      Where It Began
-                    </p>
-                  </div>
-                </div>
-                <div className="absolute top-6 left-6 w-16 h-16 border-t-2 border-l-2 border-gold/20 rounded-tl-xl" />
-                <div className="absolute bottom-6 right-6 w-16 h-16 border-b-2 border-r-2 border-gold/20 rounded-br-xl" />
+              <div className="relative aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+                <Image
+                  src="/owner-portrait.jpg"
+                  alt="Where NaamKi Doori began"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/40 to-transparent" />
+                <div className="absolute top-6 left-6 w-16 h-16 border-t-2 border-l-2 border-white/30 rounded-tl-xl" />
+                <div className="absolute bottom-6 right-6 w-16 h-16 border-b-2 border-r-2 border-white/30 rounded-br-xl" />
               </div>
             </Parallax>
 

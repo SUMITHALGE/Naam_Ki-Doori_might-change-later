@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { type Product, getWhatsAppLink } from "@/lib/data";
@@ -26,23 +27,17 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
       <Link href={`/collection/${product.slug}`} className="block">
         {/* Image Container */}
         <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-warm-beige/30 mb-5">
-          {/* Placeholder gradient for product image */}
-          <div className="absolute inset-0 bg-gradient-to-br from-warm-beige via-cream to-soft-brown/20" />
-          
-          {/* Decorative embroidery motif */}
-          <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-32 h-32 lg:w-40 lg:h-40 rounded-full border-2 border-dashed border-soft-brown/20 flex items-center justify-center">
-              <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-full border border-gold/30 flex items-center justify-center">
-                <span className="font-serif text-2xl lg:text-3xl text-soft-brown/40 italic">
-                  {product.name.charAt(0)}
-                </span>
-              </div>
-            </div>
-          </div>
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
 
           {/* Hover overlay */}
-          <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/10 transition-colors duration-500" />
-          
+          <div className="absolute inset-0 bg-charcoal/0 group-hover:bg-charcoal/20 transition-colors duration-500" />
+
           {/* View button */}
           <div className="absolute bottom-4 right-4 w-10 h-10 rounded-full bg-cream/90 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
             <ArrowUpRight size={18} className="text-charcoal" />

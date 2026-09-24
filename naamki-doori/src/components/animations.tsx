@@ -5,8 +5,10 @@ import {
   motion,
   useInView,
   useAnimation,
-  type Variant,
+  type Variants,
 } from "framer-motion";
+
+const EASE: [number, number, number, number] = [0.25, 0.4, 0.25, 1];
 
 interface FadeUpProps {
   children: React.ReactNode;
@@ -43,7 +45,7 @@ export function FadeUp({
         visible: {
           opacity: 1,
           y: 0,
-          transition: { duration, delay, ease: [0.25, 0.4, 0.25, 1] },
+          transition: { duration, delay, ease: EASE },
         },
       }}
       className={className}
@@ -97,7 +99,7 @@ export function ScaleIn({ children, delay = 0, className }: ScaleInProps) {
       ref={ref}
       initial={{ opacity: 0, scale: 0.95 }}
       animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
-      transition={{ duration: 0.7, delay, ease: [0.25, 0.4, 0.25, 1] }}
+      transition={{ duration: 0.7, delay, ease: EASE }}
       className={className}
     >
       {children}
@@ -117,7 +119,7 @@ export function Parallax({ children, offset = 50, className }: ParallaxProps) {
       initial={{ y: offset }}
       whileInView={{ y: 0 }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.9, ease: [0.25, 0.4, 0.25, 1] }}
+      transition={{ duration: 0.9, ease: EASE }}
       className={className}
     >
       {children}
@@ -158,12 +160,12 @@ export function StaggerChildren({
   );
 }
 
-export const staggerChildVariants = {
+export const staggerChildVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.25, 0.4, 0.25, 1] },
+    transition: { duration: 0.5, ease: EASE },
   },
 };
 
